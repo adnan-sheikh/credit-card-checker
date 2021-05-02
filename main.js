@@ -133,32 +133,3 @@ const checked = array => {
 };
 // Test function
 // console.log(checked(toCheck));
-
-// function to convert invalid number to valid number
-const toValid = invalidArray => {
-    let finalArray = [];
-    // checking from last if every other digit is odd or even and only doubling the element if even, and additional check added if element is over 9;
-    for (let i = invalidArray.length - 1; i >= 0; i--) {
-        if (((invalidArray.length - i) % 2) === 0) {
-            finalArray.unshift(invalidArray[i] * 2);
-            if (finalArray[0] > 9) {
-                finalArray[0] -= 9;
-            }
-        } else {
-            finalArray.unshift(invalidArray[i]);
-        }
-    }
-    const arraySum = finalArray.reduce((acc, currVal) => acc + currVal);
-    const differenceToValid = arraySum % 10;
-    let i = 0;
-    while ((finalArray[i] + differenceToValid) > 9) {
-        finalArray[i] += differenceToValid;
-    }
-    const validSum = arraySum - differenceToValid;
-    return differenceToValid;
-};
-console.log(toValid(invalid1));
-console.log(toValid(invalid2));
-console.log(toValid(invalid3));
-console.log(toValid(invalid4));
-console.log(toValid(invalid5));
